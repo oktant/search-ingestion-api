@@ -1,6 +1,6 @@
 # Search Ingestion API
 
-Ingestion system that consumes product and offer
+An ingestion system that consumes product and offer
 update events and produces updates to be sent into a search engine.
 The search engine that the system talks to is product-centric and therefore it
 must receive documents representing products with all offers related to them
