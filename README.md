@@ -22,7 +22,9 @@ docker run -p 8080:8080 necais/search-ingestion-api:0.0.1
 
 
 The application will be available at http://localhost:8080
+
 The database H2 console will be available at http://localhost:8080/h2-console
+
 The swagger will be available at http://localhost:8080/swagger-ui/index.html
 
 
