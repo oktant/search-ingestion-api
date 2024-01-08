@@ -16,10 +16,14 @@ mvnw spring-boot:run
 ```
 
 ### From docker 
+Running latest docker:
+```
+docker run -p 8080:8080 necais/search-ingestion-api:latest 
+```
+or specific tag:
 ```
 docker run -p 8080:8080 necais/search-ingestion-api:0.0.1 
 ```
-
 
 The application will be available at http://localhost:8080
 
@@ -37,8 +41,8 @@ mvnw package
 
 ### Building docker
 ```
-docker build -t necais/search-ingestion-api:0.0.1 .
-dokcer push necais/search-ingestion-api:0.0.1
+docker build -t necais/search-ingestion-api:tag .
+dokcer push necais/search-ingestion-api:tag
 ```
 
 ### Example requests:
