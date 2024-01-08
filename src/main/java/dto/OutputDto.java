@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.List;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class OutputDto {
     private String operationDesc;
     private String productId;
@@ -43,11 +43,11 @@ public class OutputDto {
         this.productName = productName;
     }
 
-    public List<String> getOfferNames(int i) {
+    public List<String> getOfferNames() {
         return offerNames;
     }
 
-    public void setOfferNames(List<String> offerName) {
-        this.offerNames = offerName;
+    public void setOfferNames(List<String> offerNames) {
+        this.offerNames = offerNames;
     }
 }

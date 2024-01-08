@@ -1,4 +1,4 @@
-package com.prisjakt.searchingestionapi.Entity;
+package com.prisjakt.searchingestionapi.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,7 +1,7 @@
 package com.prisjakt.searchingestionapi.controller;
 
-import com.prisjakt.searchingestionapi.Entity.Offer;
-import com.prisjakt.searchingestionapi.Entity.Product;
+import com.prisjakt.searchingestionapi.entity.Offer;
+import com.prisjakt.searchingestionapi.entity.Product;
 import com.prisjakt.searchingestionapi.service.OfferService;
 import com.prisjakt.searchingestionapi.service.ProductService;
 import dto.OutputDto;
@@ -47,19 +47,16 @@ public class IngestionController {
     }
 
     @DeleteMapping(value = "/products/{productId}")
-    public ResponseEntity deleteProduct(
+    public ResponseEntity<List<OutputDto>> deleteProduct(
             @PathVariable String productId) {
-        productService.deleteProduct(productId);
-        return new ResponseEntity<>(productId,
+        return new ResponseEntity<>(productService.deleteProduct(productId),
                 HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/offers/{offerId}")
-    public ResponseEntity deleteOffer(
+    public ResponseEntity<List<OutputDto>> deleteOffer(
             @PathVariable String offerId) {
-        offerService.deleteOffer(offerId);
-        return new ResponseEntity<>(offerId,
-                HttpStatus.OK);
+        return new ResponseEntity<>(offerService.deleteOffer(offerId), HttpStatus.OK);
     }
 
 }

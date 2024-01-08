@@ -1,6 +1,6 @@
 package com.prisjakt.searchingestionapi.repository;
 
-import com.prisjakt.searchingestionapi.Entity.Offer;
+import com.prisjakt.searchingestionapi.entity.Offer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

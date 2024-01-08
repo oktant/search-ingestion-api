@@ -1,7 +1,7 @@
 package com.prisjakt.searchingestionapi;
 
-import com.prisjakt.searchingestionapi.Entity.Offer;
-import com.prisjakt.searchingestionapi.Entity.Product;
+import com.prisjakt.searchingestionapi.entity.Offer;
+import com.prisjakt.searchingestionapi.entity.Product;
 import com.prisjakt.searchingestionapi.repository.OfferRepository;
 import com.prisjakt.searchingestionapi.repository.ProductRepository;
 import com.prisjakt.searchingestionapi.service.OfferService;
@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -78,5 +79,24 @@ public class OfferServiceTest {
         assertEquals("Delete a searchable product document", actual.get(0).getOperationDesc());
     }
 
+    @Test
+    public void deleteOfferNoProductAssociated() {
+        List <OutputDto> actual = offerService.deleteOffer("o1");
+        assertEquals(1, actual.size());
+    }
+    @Test
+    public void deleteOfferWithProductAssociated() {
+        Offer offerChange = new Offer();
+        offerChange.setOfferId("o1");
+        offerChange.setOfferId("product1");
+        offerChange.setRelatedProductId("p2");
+        List<Offer> offerList = Collections.singletonList(offerChange);
+        Optional<Offer> optOffer = Optional.of(offer);
+        when(offerRepository.findById("o1")).thenReturn(Optional.of(offer));
+        when(offerRepository.findAllByRelatedProductId(optOffer.get().getRelatedProductId())).thenReturn(offerList);
+        List <OutputDto> actual = offerService.deleteOffer("o1");
+        assertEquals(2, actual.size());
+        assertEquals("Delete a searchable product document", actual.get(0).getOperationDesc());
+    }
 
 }

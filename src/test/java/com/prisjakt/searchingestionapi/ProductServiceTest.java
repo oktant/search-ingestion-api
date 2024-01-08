@@ -1,7 +1,7 @@
 package com.prisjakt.searchingestionapi;
 
-import com.prisjakt.searchingestionapi.Entity.Offer;
-import com.prisjakt.searchingestionapi.Entity.Product;
+import com.prisjakt.searchingestionapi.entity.Offer;
+import com.prisjakt.searchingestionapi.entity.Product;
 import com.prisjakt.searchingestionapi.repository.OfferRepository;
 import com.prisjakt.searchingestionapi.repository.ProductRepository;
 import com.prisjakt.searchingestionapi.service.ProductService;
@@ -57,7 +57,15 @@ public class ProductServiceTest {
         when(offerRepository.findAllByRelatedProductId(product.getProductId())).thenReturn(Arrays.asList(offer));
         List<OutputDto> actual = productService.upsertProduct(product);
         assertEquals(1, actual.size());
-        assertEquals("o1", actual.get(0).getOfferNames(0).get(0));
+        assertEquals("Offer1 for p1", actual.get(0).getOfferNames().get(0));
+    }
+
+    @Test
+    public void deleteProduct() {
+        List <OutputDto> actual = productService.deleteProduct("p1");
+        assertEquals(1, actual.size());
+        assertEquals("Delete a searchable product document", actual.get(0).getOperationDesc());
+
     }
 
 }
